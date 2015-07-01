@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UILabel *numDisplay;
+- (IBAction)numBtn:(UIButton *)sender;
+- (IBAction)mathBtn:(UIButton *)sender;
+- (IBAction)resultBtn:(UIButton *)sender;
+- (IBAction)dotBtn:(UIButton *)sender;
 
 @end
 
