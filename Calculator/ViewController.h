@@ -14,6 +14,8 @@
 - (IBAction)mathBtn:(UIButton *)sender;
 - (IBAction)resultBtn:(UIButton *)sender;
 - (IBAction)dotBtn:(UIButton *)sender;
+- (IBAction)clearBtn:(UIButton *)sender;
+- (IBAction)deleteBtn:(UIButton *)sender;
 
 @end
 
