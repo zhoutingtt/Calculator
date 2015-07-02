@@ -13,6 +13,7 @@
     NSString *_num1;
     NSString *_num2;
     NSString *_numTemp;
+    NSString *_sign;
 }
 @end
 
@@ -35,16 +36,51 @@
 
     _numTemp = [NSString stringWithFormat:@"%@%ld",_numTemp,(long)sender.tag];
     NSLog(@"%@",_numTemp);
-    _num1 = _numTemp;
     [self display];
     NSLog(@"%@",_numDisplay);
 }
 
 - (IBAction)mathBtn:(UIButton *)sender {
+    _num1 = _numTemp;
+    _numTemp=@"";
+    self.numDisplay.text = @"";
+    _sign = [NSString stringWithFormat:@"%ld",(long)sender.tag];
+    
 }
 
 - (IBAction)resultBtn:(UIButton *)sender {
-}
+   
+    if ([_sign isEqualToString: @"10"]) {
+        _num2 = _numTemp;
+        double sum;
+        sum = [_num1 doubleValue]+[_num2 doubleValue];
+        _numTemp = [NSString stringWithFormat:@"%f",sum];
+        [self display];
+        _numTemp = @"";
+    }else if([_sign isEqualToString:@"20"]){
+        _num2 = _numTemp;
+        double sum;
+        sum = [_num1 doubleValue]-[_num2 doubleValue];
+        _numTemp = [NSString stringWithFormat:@"%f",sum];
+        [self display];
+         _numTemp = @"";
+    }else if ([_sign isEqualToString:@"30"]){
+        _num2 = _numTemp;
+        double sum;
+        sum = [_num1 doubleValue]*[_num2 doubleValue];
+        _numTemp = [NSString stringWithFormat:@"%f",sum];
+        [self display];
+         _numTemp = @"";
+    }else if ([_sign isEqualToString:@"40"]){
+        _num2 = _numTemp;
+        double sum;
+        sum = [_num1 doubleValue]/[_num2 doubleValue];
+        _numTemp = [NSString stringWithFormat:@"%f",sum];
+        [self display];
+         _numTemp = @"";
+    }
+    
+   }
 
 - (IBAction)dotBtn:(UIButton *)sender {
 }
