@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *numDisplay;
+@property (weak, nonatomic) IBOutlet UILabel *inputRecord;
 - (IBAction)numBtn:(UIButton *)sender;
 - (IBAction)mathBtn:(UIButton *)sender;
 - (IBAction)resultBtn:(UIButton *)sender;

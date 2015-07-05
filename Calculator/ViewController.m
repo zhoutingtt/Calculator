@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import ""
 
 @interface ViewController ()
 {
@@ -14,6 +15,7 @@
     NSString *_num2;
     NSString *_numTemp;
     NSString *_sign;
+    NSString *_BtnValue;
 }
 @end
 
@@ -25,6 +27,7 @@
     _numTemp = @"";
     _num1=@"";
     _num2=@"";
+    _BtnValue=@"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,6 +48,7 @@
     _numTemp=@"";
     self.numDisplay.text = @"";
     _sign = [NSString stringWithFormat:@"%ld",(long)sender.tag];
+    _BtnValue = [UIButton.UILabel.text];
     
 }
 
@@ -54,7 +58,7 @@
         _num2 = _numTemp;
         double sum;
         sum = [_num1 doubleValue]+[_num2 doubleValue];
-        _numTemp = [NSString stringWithFormat:@"%f",sum];
+        _numTemp = [NSString stringWithFormat:@"%.2f",sum];
         [self display];
         _numTemp = @"";
     }else if([_sign isEqualToString:@"20"]){
@@ -74,10 +78,14 @@
     }else if ([_sign isEqualToString:@"40"]){
         _num2 = _numTemp;
         double sum;
-        sum = [_num1 doubleValue]/[_num2 doubleValue];
-        _numTemp = [NSString stringWithFormat:@"%f",sum];
-        [self display];
-         _numTemp = @"";
+        if ([_num2 isEqualToString:@"0"]){
+            _numDisplay.text = @"sorry!除数不能为0";
+        }else {
+            sum = [_num1 doubleValue]/[_num2 doubleValue];
+            _numTemp = [NSString stringWithFormat:@"%f",sum];
+            [self display];
+            _numTemp = @"";
+        }
     }
     
    }
@@ -105,6 +113,10 @@
 
 - (void)display{
     [self.numDisplay setText:[NSString stringWithFormat:@"%@",_numTemp]];
+}
+
+- (void)inputRec{
+    [self.inputRecord setText:[NSString stringWithFormat:@"%@",_num1,]];
 }
 
 @end
