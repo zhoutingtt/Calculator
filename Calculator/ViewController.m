@@ -115,13 +115,13 @@
     /**
      *  方法1（正则表达式）
      */
-    NSString *regexZero = @"[0]$";
-    NSString *regexDot = @"[.]$";
-    NSPredicate *predZero = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexZero];
-    NSPredicate *predDot = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexDot];
-    while ([predZero evaluateWithObject:_numTemp] || [predDot evaluateWithObject:_numTemp]) {
-        _numTemp = [_numTemp substringToIndex:_numTemp.length - 1];
-    }
+//    NSString *regexZero = @"[0]$";
+//    NSString *regexDot = @"[.]$";
+//    NSPredicate *predZero = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexZero];
+//    NSPredicate *predDot = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexDot];
+//    while ([predZero evaluateWithObject:_numTemp] || [predDot evaluateWithObject:_numTemp]) {
+//        _numTemp = [_numTemp substringToIndex:_numTemp.length - 1];
+//    }
 
     /**
      *  方法2
@@ -130,6 +130,10 @@
 //        _numTemp = [_numTemp substringToIndex:_numTemp.length - 1];
 //    }
     
+    /**
+     *  方法3（NSString转double再转NSString）
+     */
+//    [self.numDisplay setText:[NSString stringWithFormat:@"%@",@(_numTemp.doubleValue)]];
     
     [self.numDisplay setText:[NSString stringWithFormat:@"%@",_numTemp]];
 }
