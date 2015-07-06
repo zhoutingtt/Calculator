@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import ""
 
 @interface ViewController ()
 {
@@ -45,11 +44,11 @@
 
 - (IBAction)mathBtn:(UIButton *)sender {
     _num1 = _numTemp;
-    _numTemp=@"";
+    _numTemp = @"";
     self.numDisplay.text = @"";
     _sign = [NSString stringWithFormat:@"%ld",(long)sender.tag];
-    _BtnValue = [UIButton.UILabel.text];
-    
+    _BtnValue = sender.titleLabel.text;
+    NSLog(@"%@",_BtnValue);
 }
 
 - (IBAction)resultBtn:(UIButton *)sender {
@@ -59,6 +58,7 @@
         double sum;
         sum = [_num1 doubleValue]+[_num2 doubleValue];
         _numTemp = [NSString stringWithFormat:@"%.2f",sum];
+        [self inputRec];
         [self display];
         _numTemp = @"";
     }else if([_sign isEqualToString:@"20"]){
@@ -112,11 +112,30 @@
 }
 
 - (void)display{
+    /**
+     *  方法1（正则表达式）
+     */
+    NSString *regexZero = @"[0]$";
+    NSString *regexDot = @"[.]$";
+    NSPredicate *predZero = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexZero];
+    NSPredicate *predDot = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexDot];
+    while ([predZero evaluateWithObject:_numTemp] || [predDot evaluateWithObject:_numTemp]) {
+        _numTemp = [_numTemp substringToIndex:_numTemp.length - 1];
+    }
+
+    /**
+     *  方法2
+     */
+//    while ([[_numTemp substringFromIndex:_numTemp.length - 1] isEqualToString:@"0"] || [[_numTemp substringFromIndex:_numTemp.length - 1] isEqualToString:@"."]) {
+//        _numTemp = [_numTemp substringToIndex:_numTemp.length - 1];
+//    }
+    
+    
     [self.numDisplay setText:[NSString stringWithFormat:@"%@",_numTemp]];
 }
 
 - (void)inputRec{
-    [self.inputRecord setText:[NSString stringWithFormat:@"%@",_num1,]];
+    [self.inputRecord setText:[NSString stringWithFormat:@"%@%@%@",_num1,_BtnValue,_num2]];
 }
 
 @end
