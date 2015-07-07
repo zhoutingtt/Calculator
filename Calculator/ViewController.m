@@ -60,7 +60,9 @@
         _numTemp = [NSString stringWithFormat:@"%.2f",sum];
         [self inputRec];
         [self display];
+        _num1 = _numTemp;
         _numTemp = @"";
+        
     }else if([_sign isEqualToString:@"20"]){
         _num2 = _numTemp;
         double sum;
@@ -133,11 +135,12 @@
     /**
      *  方法3（NSString转double再转NSString）
      */
-//    [self.numDisplay setText:[NSString stringWithFormat:@"%@",@(_numTemp.doubleValue)]];
+    [self.numDisplay setText:[NSString stringWithFormat:@"%@",@(_numTemp.doubleValue)]];
     
-    [self.numDisplay setText:[NSString stringWithFormat:@"%@",_numTemp]];
+   // [self.numDisplay setText:[NSString stringWithFormat:@"%@",_numTemp]];
 }
 
+//输入记录保存
 - (void)inputRec{
     [self.inputRecord setText:[NSString stringWithFormat:@"%@%@%@",_num1,_BtnValue,_num2]];
 }
